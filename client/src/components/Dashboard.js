@@ -3,14 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Dashboard.css';
 
-// Department-specific average consultation times (in minutes)
-const DEPARTMENT_CONSULTATION_TIMES = {
-  'General': 10,
-  'Cardiology': 15,
-  'Neurology': 20,
-  'Orthopedics': 15,
-  'Pediatrics': 12
-};
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -83,7 +75,7 @@ const Dashboard = () => {
   const handleAddSymptom = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/api/tokens/symptoms', newSymptom);
+      await axios.post('http://localhost:5000/api/tokens/symptoms', newSymptom);
       setShowAddSymptomsModal(false);
       setNewSymptom({
         name: '',
